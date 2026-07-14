@@ -128,8 +128,24 @@ from SQLite instead of starting over.
 
 ## Deployment (free tier)
 
-Any platform that can run a long-lived Python process works. Two easy
-options:
+**Deployed on Streamlit Community Cloud** (share.streamlit.io), deploying
+directly from this GitHub repo:
+
+1. Sign in to share.streamlit.io with GitHub and authorize access to this
+   repo.
+2. "Create app" → "Deploy a public app from GitHub" → repository
+   `satyashreyasr-oss/Scheduling-Assistant`, branch `master`, main file
+   `app.py`.
+3. Under "Advanced settings" → Secrets, add (TOML format):
+   ```toml
+   GROQ_API_KEY = "your-groq-key-here"
+   ```
+   Streamlit Cloud exposes secrets both via `st.secrets` and as regular
+   environment variables, so `os.environ.get(...)` works with no code
+   changes.
+4. Deploy.
+
+Other free-tier platforms work too, since this is a standard Streamlit app:
 
 - **Hugging Face Spaces (Streamlit SDK)** — create a Space, set SDK to
   `streamlit`, push this repo, and add `GROQ_API_KEY` (and optionally
@@ -139,11 +155,12 @@ options:
   `streamlit run app.py --server.port $PORT --server.address 0.0.0.0`, and
   add the same env vars under Render's Environment settings.
 
-Note: free-tier disks are typically ephemeral across redeploys/restarts, so
-`data/*.db` (bookings + checkpoints) may reset when the instance restarts —
-acceptable for this assignment's mock persistence requirement, since it does
-survive ordinary page refreshes and short-lived restarts within a running
-instance.
+Note: free-tier disks are typically ephemeral across redeploys/restarts (this
+includes Streamlit Community Cloud, which spins the app down after
+inactivity), so `data/*.db` (bookings + checkpoints) may reset when the
+instance restarts — acceptable for this assignment's mock persistence
+requirement, since it does survive ordinary page refreshes and short-lived
+restarts within a running instance.
 
 ## Environment variables
 
