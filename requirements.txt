@@ -1,0 +1,8 @@
+streamlit>=1.38
+langgraph>=0.2.60
+langgraph-checkpoint-sqlite>=2.0.1
+langchain-core>=0.3.15
+langchain-groq>=0.2.1
+python-dotenv>=1.0.1
+dateparser>=1.2.0
+requests>=2.32.3
