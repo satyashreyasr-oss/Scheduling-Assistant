@@ -1,5 +1,7 @@
 # Multi-Agent Scheduling Assistant
 
+**Live app:** https://scheduling-assistant-amsuy6znxstqjeqrlokrok.streamlit.app/
+
 A LangGraph-based scheduling assistant with two cooperating agents:
 
 - **Triage Agent** — reads each incoming message and decides whether it's a
